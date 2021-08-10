@@ -4,6 +4,10 @@
 		- [Pay options](#pay-options)
 		- [Security Group](#security-group)
 		- [Key par](#key-par)
+		- [Autoscaling groups](#autoscaling-groups)
+			- [Termination protection](#termination-protection)
+				- [Protect instance from scale in](#protect-instance-from-scale-in)
+				- [Suspend autoscaling processes](#suspend-autoscaling-processes)
 		- [How to's](#how-tos)
 			- [Connect to a EC2 by terminal (Linux/Mac)](#connect-to-a-ec2-by-terminal-linuxmac)
 			- [Convert the instance into a Web server](#convert-the-instance-into-a-web-server)
@@ -37,6 +41,27 @@ Is a set of firewall rules that control the traffic of your instance
 ### Key par
 
 Consist of a public key that AWS stores, and a private key that you store. Togheter allow you to connect to your instance securely. You can share the public key, but `NEVER SHARE THE PRIVATE ONE`
+
+### Autoscaling groups
+
+#### Termination protection
+
+##### Protect instance from scale in
+
+Check the `Enable instance scale-in protection`. To understand how this mechanism works, check this page: https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html
+
+##### Suspend autoscaling processes
+
+These are the processes you can choose to suspend:
+
+- `Terminate`
+- `Launch`
+- `AddToLoadBalancer`
+- `AlarmNotification`
+- `AZRebalance`
+- `HealthCheck`
+- `ReplaceUnhealthy`
+- `ScheduledActions`
 
 ### How to's
 

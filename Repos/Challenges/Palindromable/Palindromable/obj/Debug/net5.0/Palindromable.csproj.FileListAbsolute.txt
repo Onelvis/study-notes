@@ -1,0 +1,16 @@
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.exe
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.deps.json
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.runtimeconfig.json
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.runtimeconfig.dev.json
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.dll
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\ref\Palindromable.dll
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\bin\Debug\net5.0\Palindromable.pdb
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.csproj.AssemblyReference.cache
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.AssemblyInfoInputs.cache
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.AssemblyInfo.cs
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.csproj.CoreCompileInputs.cache
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.dll
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\ref\Palindromable.dll
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.pdb
+C:\Users\onelv\repos\study-notes\Repos\Challenges\Palindromable\Palindromable\obj\Debug\net5.0\Palindromable.genruntimeconfig.cache

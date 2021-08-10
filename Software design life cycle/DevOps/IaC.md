@@ -25,8 +25,12 @@ ___
 `terraform console` --> Open terraform console (Remeber to run `terraform init` before this) 
 
 `terraform plan` --> Get a terraform plan
+#TODO
+- `-target `
 
 `terraform apply` --> Run a terraform plan
+
+`terraform state list` --> List all the terraform resources you have within a terraform state.
 
 This is a shortcut for:
 `terraform plan -out file; terraform apply file; rm file`
