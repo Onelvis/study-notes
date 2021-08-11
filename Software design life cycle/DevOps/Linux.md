@@ -5,6 +5,8 @@
 	- [Add ODBC Driver 17 for SQL on Amazon Linux](#add-odbc-driver-17-for-sql-on-amazon-linux)
 	- [Commands](#commands)
 		- [`>` Standard output redirect:](#-standard-output-redirect)
+	- [Services](#services)
+		- [Linux Service Management](#linux-service-management)
 ## Create ssh enabled user
 
 ```bash
@@ -37,3 +39,12 @@ The > sign is used for redirecting the output of a program to something other th
 - The `>>` appends to a file or creates the file if it doesn't exist.
 - The `<` symbol is used for input(STDIN) redirection
 - `>&`re-directs output of one file to another.
+
+## Services
+
+### Linux Service Management
+
+Services are stored in `/etc/init.d`, this is a daemon which is the first process of the Linux system.
+
+Start a service: `/etc/init.d/ssh start`
+Stop a service: `/etc/init.d/ssh stop`
