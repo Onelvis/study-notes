@@ -5,8 +5,19 @@
 	- [Add ODBC Driver 17 for SQL on Amazon Linux](#add-odbc-driver-17-for-sql-on-amazon-linux)
 	- [Hostname](#hostname)
 	- [Commands](#commands)
+		- [File permissions management](#file-permissions-management)
+		- [Filesystem navigation](#filesystem-navigation)
+		- [File management](#file-management)
+		- [System management](#system-management)
+			- [`strace`](#strace)
+			- [`hostnamectl`](#hostnamectl)
+			- [`df`](#df)
+		- [Users management](#users-management)
+		- [Networking](#networking)
+			- [`netstat`](#netstat)
+			- [ssh](#ssh)
 	- [Stdout, Stdin and Stderr redirection](#stdout-stdin-and-stderr-redirection)
-		- [POSIX File descriptors:](#posix-file-descriptors)
+		- [POSIX File descriptors](#posix-file-descriptors)
 		- [Stdout redirection `>`](#stdout-redirection-)
 		- [Stdin redirection `<`](#stdin-redirection-)
 		- [Stderr redirection `2>`](#stderr-redirection-2)
@@ -14,7 +25,7 @@
 		- [Pipes `|`](#pipes-)
 	- [Services](#services)
 		- [Linux Service Management](#linux-service-management)
-	- [Networking](#networking)
+	- [Networking](#networking-1)
 		- [Socket vs Port](#socket-vs-port)
 ## Create ssh enabled user
 
@@ -47,56 +58,90 @@ There are tree types of hostnames in linux:
 2. Static hostname, that is the one that gets loaded with the kernel, and cand be found at `/etc/hostname`
 ## Commands
 
-`man <command_name`: Will print to you help for using the command
+### File permissions management
+
+
+
+### Filesystem navigation
 
 `pwd` (Print Current Directory): Shows current directory full path
 
-`strace`: Used to trace all the system calls  that a command performs. Usage: `strace <command>`
-
 `ls`: List all the directories and files on the current directory
+
 - `-a`: Show hidden files
+
 - `-l`: Format as list
-  
+
+### File management
+
 `touch`: Create file
 
 `last`: By default, displays the list of all users logged in and out since the file `/var/log/wtmp` was created.
+
 - `-<number>` specific lines to display (Top to bottom)
+
 - `-R` Hide hostname of the users
 
-`hostnamectl`: Used to read and modify the systen hostname
+`cat`: "Print" the content of a file
 
-`df`: Check file system disk space usage
-- `-h`: "Human" readable format, basically show mb,kb and gb
+`rm`: Delete a file
+
+- `-r`: Delete recursively
+
+- `-f`: JUST DO IT!
+
+### System management
+
+#### `strace`
+
+Used to trace all the system calls  that a command performs. Usage: `strace <command>`
+
+#### `hostnamectl`
+
+Used to read and modify the systen hostname
+
+#### `df`
+
+Check file system disk space usage
+
+```
+-h: "Human" readable format, basically show mb,kb and gb
+```
+
+### Users management
 
 `su <user_name>`: Switch user
 
-`cat`: "Print" the content of a file
+`man <command_name`: Will print to you help for using the command
 
 `w`: Prints the logged users, including yourself, more verbose than `who`
 
 `who`: Same as the previous one, but shorter output.
 
-`rm`: Delete a file
-
-- `-r`: Delete recursively
-- `-f`: JUST DO IT!
-
 `top`: Watch processes
 
-`netstat`: Print network connections, routing tables, interface statistics, masquerade connections and multicast mermerships
+### Networking
 
-- `t`: TCP
-- `u`: UDP
-- `p`: Program attached to port (Using it and listening), this will print information only if the command is run by root.
-- `l`: Listening ports
-- `n`: Numeric
+#### `netstat`
 
-`ssh`: Program to ssh into machine
-- `-i "<private_ssh_key_file_name>"`: Identity File
- 
+Prints network connections, routing tables, interface statistics, masquerade connections and multicast mermerships
+
+```
+`-t`: TCP
+`-u`: UDP
+`-p`: Program attached to port (Using it and listening), this will print information only if the command is run by root.
+`-l`: Listening ports
+`-n`: Numeric
+```
+#### ssh
+
+> Program to logging into a remote machine and for executing commands on a remote machine.
+
+- `-i "<private_ssh_key_file_name>"`: Identity File path
+
 ## Stdout, Stdin and Stderr redirection
 
-### POSIX File descriptors:
+### POSIX File descriptors
 
 |Int value | Name | <stdio.h> file stream|
 |----------|------|----------------------|
