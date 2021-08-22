@@ -7,15 +7,26 @@
 	- [Commands](#commands)
 		- [File permissions management](#file-permissions-management)
 		- [Filesystem navigation](#filesystem-navigation)
+			- [$ `pwd`](#-pwd)
 		- [File management](#file-management)
+			- [$ `stat` <file/directory name>](#-stat-filedirectory-name)
+			- [$ `touch`](#-touch)
+			- [$ `last`](#-last)
+			- [$ `cat`](#-cat)
+			- [$ `rm`](#-rm)
+			- [$ `rsync`](#-rsync)
 		- [System management](#system-management)
-			- [`strace`](#strace)
-			- [`hostnamectl`](#hostnamectl)
-			- [`df`](#df)
+			- [$ `strace <command>`](#-strace-command)
+			- [$ `hostnamectl`](#-hostnamectl)
+			- [$ `df`](#-df)
 		- [Users management](#users-management)
+			- [$ `su <user_name>`](#-su-user_name)
+			- [$ `w`](#-w)
+			- [$ `who`](#-who)
+			- [$ `top`](#-top)
 		- [Networking](#networking)
-			- [`netstat`](#netstat)
-			- [ssh](#ssh)
+			- [$ `netstat`](#-netstat)
+			- [$ `ssh`](#-ssh)
 	- [Stdout, Stdin and Stderr redirection](#stdout-stdin-and-stderr-redirection)
 		- [POSIX File descriptors](#posix-file-descriptors)
 		- [Stdout redirection `>`](#stdout-redirection-)
@@ -24,6 +35,8 @@
 		- [Redirection vs Pipes](#redirection-vs-pipes)
 		- [Pipes `|`](#pipes-)
 	- [Services](#services)
+	- [File system](#file-system)
+		- [Inodes](#inodes)
 		- [Linux Service Management](#linux-service-management)
 	- [Networking](#networking-1)
 		- [Socket vs Port](#socket-vs-port)
@@ -36,7 +49,6 @@ mkdir /home/new_user/.ssh
 echo "key" > /home/new_user/.ssh/authorized_keys # You need to create those directory/files if not exists
 chown -R new_user /home/new_user/.ssh # Not sure if this is necesary
 sudo systemctl restart sshd.service # For CentOs Linux
-
 ```
 
 ## Add ssh key to bitbucket repo
@@ -50,21 +62,25 @@ sudo systemctl restart sshd.service # For CentOs Linux
 
 - `yum install msodbcsql17`
 
-
 ## Hostname
 
 There are tree types of hostnames in linux:
-1. "Pretty" hostname, which allows to have special characters
-2. Static hostname, that is the one that gets loaded with the kernel, and cand be found at `/etc/hostname`
+
+1. ***"Pretty" hostname***, which allows to have special characters
+
+2. ***Static hostname***, that is the one that gets loaded with the kernel, and cand be found at `/etc/hostname`
+
+3. ***Transient hostnane***, this is the one that will appear in the network.
+
 ## Commands
 
 ### File permissions management
 
-
-
 ### Filesystem navigation
 
-`pwd` (Print Current Directory): Shows current directory full path
+#### $ `pwd`
+
+Shows current directory full path
 
 `ls`: List all the directories and files on the current directory
 
@@ -74,66 +90,88 @@ There are tree types of hostnames in linux:
 
 ### File management
 
-`touch`: Create file
+#### $ `stat` <file/directory name>
 
-`last`: By default, displays the list of all users logged in and out since the file `/var/log/wtmp` was created.
+This is a syscall that will print the information about an inode.
+
+#### $ `touch`
+
+Create file
+
+#### $ `last`
+
+By default, displays the list of all users logged in and out since the file `/var/log/wtmp` was created.
 
 - `-<number>` specific lines to display (Top to bottom)
 
 - `-R` Hide hostname of the users
 
-`cat`: "Print" the content of a file
+#### $ `cat`
 
-`rm`: Delete a file
+"Print" the content of a file
 
-- `-r`: Delete recursively
+#### $ `rm`
 
-- `-f`: JUST DO IT!
+>Delete a file
+>
+>- `-r`: Delete recursively
+>
+>- `-f`: JUST DO IT!
+
+#### $ `rsync`
+
+Used to copy files from/to remote hosts.
+
+`rsync user@hostname:/folder/mifyle.temp .`
 
 ### System management
 
-#### `strace`
+#### $ `strace <command>`
 
-Used to trace all the system calls  that a command performs. Usage: `strace <command>`
+Used to trace all the system calls  that a command performs.
 
-#### `hostnamectl`
+#### $ `hostnamectl`
 
 Used to read and modify the systen hostname
 
-#### `df`
+#### $ `df`
 
 Check file system disk space usage
 
-```
--h: "Human" readable format, basically show mb,kb and gb
-```
+- `-h`: "Human" readable format, basically show mb,kb and gb
 
 ### Users management
 
-`su <user_name>`: Switch user
+#### $ `su <user_name>`
 
-`man <command_name`: Will print to you help for using the command
+Switch user
 
-`w`: Prints the logged users, including yourself, more verbose than `who`
+#### $ `w`
 
-`who`: Same as the previous one, but shorter output.
+Prints the logged users, including yourself, more verbose than `who`
 
-`top`: Watch processes
+#### $ `who`
+
+Same as the previous one, but shorter output.
+
+#### $ `top`
+
+Watch processes
 
 ### Networking
 
-#### `netstat`
+#### $ `netstat`
 
 Prints network connections, routing tables, interface statistics, masquerade connections and multicast mermerships
 
-```
-`-t`: TCP
-`-u`: UDP
-`-p`: Program attached to port (Using it and listening), this will print information only if the command is run by root.
-`-l`: Listening ports
-`-n`: Numeric
-```
-#### ssh
+- `-t`: TCP
+- `-a`: Display all listening and not listening sockets.
+- `-u`: UDP
+- `-p`: Program attached to port (Using it and listening), this will print information only if the command is run by root.
+- `-l`: Listening ports
+- `-n`: Numeric
+
+#### $ `ssh`
 
 > Program to logging into a remote machine and for executing commands on a remote machine.
 
@@ -202,6 +240,43 @@ Which lead us to the next topic.
 
 
 ## Services
+
+Control groups, usually referred to as cgroups, are a Linux
+       kernel feature which allow processes to be organized into
+       hierarchical groups whose usage of various types of resources can
+       then be limited and monitored.  The kernel's cgroup interface is
+       provided through a pseudo-filesystem called cgroupfs.  Grouping
+       is implemented in the core cgroup kernel code, while resource
+       tracking and limits are implemented in a set of per-resource-type
+       subsystems (memory, CPU, and so on).
+## File system
+
+
+### Inodes
+
+Files are just an entry that is composed by the file name and it's inode number, example:
+
+```bash
+ls -i # With this, we are asking to list all the files and directories in the current directories and also show each one with it's inode value at the left
+
+# Output:
+864 desktop   3130 Downloads 
+```
+
+dig
+
+traceroute
+
+
+Inodes contains information about:
+
+- Size of the file
+- Location of the file (On disk)
+- Permissions
+- Owner
+- Group owner
+- Creation/Modification/Access time
+- Reference count (How many hardlinks points to this file)
 
 ### Linux Service Management
 
